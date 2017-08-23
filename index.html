@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ArcheDream Characters</title>
+  <link href="https://fonts.googleapis.com/css?family=Chivo|Nunito:300,400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+  <div class="wrapper" id="app">
+  <div :class="['frame', isShowDetail ? 'frame--detail' : '' ]">
+    <div class="thumbs">
+      <thumb v-for="(thumb,index) in users"
+             key="thumb.id"
+             :id=`user-${thumb.id}`
+             :fullname="thumb.fullname"
+             :photo="thumb.photo"
+             @mouseover.native="changeCover(index)"
+             @click.native="selectUser(thumb.id)">
+      </thumb>
+    </div>
+    <div class="cover">
+      <div class="cover__photo" :style=`background-image:url(${coverPhoto})`></div>
+    </div>
+    <div class="profile">
+      <p class="profile__description">{{users[selectedIndex].description}}</p>
+      <div class="profile__footer">
+          <div class="back" @click="backToUsers()"><i class="ion-ios-arrow-thin-left"></i>Back to Characters</div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+const users = [
+  {
+    id: 1,
+    fullname: "Death",
+    photo: "http://adhk.org/wp-content/uploads/2017/08/DeathMask.jpg",
+    cover: "http://adhk.org/wp-content/uploads/2017/08/death-costume-cropped.jpg",
+    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+  },
+  {
+    id: 2,
+    fullname: "Fear",
+    photo: "http://adhk.org/wp-content/uploads/2017/08/fear-mask.jpg",
+    cover: "http://adhk.org/wp-content/uploads/2017/08/fear-costume-cropped.jpg",
+    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+  },
+  {
+    id: 3,
+    fullname: "Alper Kamu",
+    photo: "https://randomuser.me/api/portraits/men/62.jpg",
+    cover: "https://image.ibb.co/jVDVxa/3.jpg",
+    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+  },
+  {
+    id: 4,
+    fullname: "Yuri Konev",
+    photo: "https://randomuser.me/api/portraits/men/52.jpg",
+    cover: "https://image.ibb.co/b8vcca/2.jpg",
+    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+  },
+  {
+    id: 5,
+    fullname: "Cameron Howe",
+    photo: "https://randomuser.me/api/portraits/women/59.jpg",
+    cover: "https://image.ibb.co/jXXOHa/5.jpg",
+    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+  }
+];
+Vue.component("thumb", {
+  name: "thumb",
+  template: `<div class="thumb">
+    <div class="thumb__photo">
+      <img :src="photo" alt="" /></div>
+        <div class="thumb__content">
+          <h2 class="thumb__fullname">{{fullname}}</h2>
+          <p class="thumb__title">{{title}}</p>
+        </div>
+      </div>`,
+  props: ["fullname", "title", "photo", "test"]
+});
+const app = new Vue({
+  el: "#app",
+  data() {
+    return {
+      users: users,
+      coverPhoto: null,
+      isShowDetail: false,
+      others: null,
+      selected: null,
+      selectedIndex:0,
+      style:null,
+      details:{
+        description:null,
+      }
+    };
+  },
+
+  methods: {
+    thumbID(index) {
+      return `#user-${index}`;
+    },
+    changeCover(index) {
+      this.coverPhoto = this.users[index].cover;
+    },
+    selectUser(index) {
+      this.selected = document.querySelector(this.thumbID(index));
+
+      this.style=`position:absolute;left:${this.selected.offsetLeft}px;top:${this.selected.offsetTop}px`;
+      this.others = document.querySelectorAll(
+        `.thumb:not(${this.thumbID(index)})`
+      );
+      this.others.forEach((element, i) => {
+        setTimeout(() => {
+          element.classList.add("thumb--disable");
+          if (this.others.length - 1 == i) {
+            this.showDetails();
+          }
+        }, 100 * i + 1);
+      });
+    },
+    backToUsers(){
+      this.isShowDetail = false;
+      this.selected.setAttribute("style","");
+       this.others.forEach((element, i) => {
+        setTimeout(() => {
+          element.classList.remove("thumb--disable");
+        }, 100 * i + 1);
+      });
+    },
+    showDetails() {
+      setTimeout(() => {
+        this.selected.setAttribute("style",this.style);
+      }, 200);
+      setTimeout(() => {
+         this.isShowDetail = true;
+          this.selected.style.top="90px"
+      }, 220);
+    }
+  },
+  created() {
+    this.coverPhoto = this.users[0].cover;
+  }
+});
