@@ -4,31 +4,31 @@ var users = [{
   id: 1,
   fullname: "Death",
   photo: "http://adhk.org/wp-content/uploads/2017/08/DeathMask.jpg",
-  cover: "http://adhk.org/wp-content/uploads/2017/08/death-costume-cropped.jpg",
+  cover: "http://adhk.org/wp-content/uploads/2017/08/death-costume.png",
   description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
 }, {
   id: 2,
   fullname: "Fear",
   photo: "http://adhk.org/wp-content/uploads/2017/08/fear-mask.jpg",
-  cover: "http://adhk.org/wp-content/uploads/2017/08/fear-costume-cropped.jpg",
+  cover: "http://adhk.org/wp-content/uploads/2017/08/fear-costume.png",
   description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
 }, {
   id: 3,
   fullname: "Fire",
   photo: "http://adhk.org/wp-content/uploads/2017/08/fire-mask.jpg",
-  cover: "http://adhk.org/wp-content/uploads/2017/08/fire-costume-cropped.jpg",
+  cover: "http://adhk.org/wp-content/uploads/2017/08/fire-costume.png",
   description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
 }, {
   id: 4,
   fullname: "Baby",
   photo: "http://adhk.org/wp-content/uploads/2017/08/baby-mask.jpg",
-  cover: "http://adhk.org/wp-content/uploads/2017/08/baby-costume.jpg",
+  cover: "http://adhk.org/wp-content/uploads/2017/08/baby-costume.png",
   description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
 }, {
   id: 5,
   fullname: "Insect",
   photo: "http://adhk.org/wp-content/uploads/2017/08/insect-mask.jpg",
-  cover: "http://adhk.org/wp-content/uploads/2017/08/insect-costume.jpg",
+  cover: "http://adhk.org/wp-content/uploads/2017/08/insect-costume.png",
   description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
 }];
 Vue.component("thumb", {
@@ -71,6 +71,7 @@ var app = new Vue({
 
       this.selected = document.querySelector(this.thumbID(index));
 
+      this.style = "position:absolute;left:" + this.selected.offsetLeft + "px;top:" + this.selected.offsetTop + "px";
       this.others = document.querySelectorAll(".thumb:not(" + this.thumbID(index) + ")");
       this.others.forEach(function (element, i) {
         setTimeout(function () {
@@ -87,6 +88,8 @@ var app = new Vue({
       this.others.forEach(function (element, i) {
         setTimeout(function () {
           element.classList.remove("thumb--disable");
+          document.getElementById('cover-section-photo').classList.remove("cover__photo__detail");
+
         }, 100 * i + 1);
       });
     },
@@ -99,8 +102,7 @@ var app = new Vue({
       setTimeout(function () {
         _this2.isShowDetail = true;
         _this2.selected.style.top = "90px";
-        _this2.selected.style.margin = "284px auto 10px auto";
-
+        document.getElementById('cover-section-photo').classList.add("cover__photo__detail");
       }, 220);
     }
   },

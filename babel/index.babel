@@ -1,38 +1,73 @@
 const users = [
   {
     id: 1,
-    fullname: "Death",
-    photo: "http://adhk.org/wp-content/uploads/2017/08/DeathMask.jpg",
-    cover: "http://adhk.org/wp-content/uploads/2017/08/death-costume-cropped.jpg",
+    fullname: "Holden Caulfield",
+    title: "UI/UX Designer",
+    photo: "https://randomuser.me/api/portraits/men/81.jpg",
+    cover: "https://image.ibb.co/ctMTiF/1.jpg",
     description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    social: {
+      facebook: "https://www.facebook.com/knyttneve",
+      twitter: "https://www.twitter.com/knyttneve",
+      instagram: "https://www.instagram.com/midlake",
+      github: "https://github.com/knyttneve"
+    }
   },
   {
     id: 2,
-    fullname: "Fear",
-    photo: "http://adhk.org/wp-content/uploads/2017/08/fear-mask.jpg",
-    cover: "http://adhk.org/wp-content/uploads/2017/08/fear-costume-cropped.jpg",
+    fullname: "Phoebe Salinger",
+    title: "Developer",
+    photo: "https://randomuser.me/api/portraits/women/63.jpg",
+    cover: "https://image.ibb.co/mfRTiF/4.jpg",
     description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    social: {
+      facebook: "https://www.facebook.com/knyttneve",
+      twitter: "https://www.twitter.com/knyttneve",
+      instagram: "https://www.instagram.com/midlake",
+      github: "https://github.com/knyttneve"
+    }
   },
   {
     id: 3,
     fullname: "Alper Kamu",
+    title: "Software Engineer",
     photo: "https://randomuser.me/api/portraits/men/62.jpg",
     cover: "https://image.ibb.co/jVDVxa/3.jpg",
     description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    social: {
+      facebook: "https://www.facebook.com/knyttneve",
+      twitter: "https://www.twitter.com/knyttneve",
+      instagram: "https://www.instagram.com/midlake",
+      github: "https://github.com/knyttneve"
+    }
   },
   {
     id: 4,
     fullname: "Yuri Konev",
+    title: "Game Developer",
     photo: "https://randomuser.me/api/portraits/men/52.jpg",
     cover: "https://image.ibb.co/b8vcca/2.jpg",
     description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    social: {
+      facebook: "https://www.facebook.com/knyttneve",
+      twitter: "https://www.twitter.com/knyttneve",
+      instagram: "https://www.instagram.com/midlake",
+      github: "https://github.com/knyttneve"
+    }
   },
   {
     id: 5,
     fullname: "Cameron Howe",
+    title: "QA Engineer",
     photo: "https://randomuser.me/api/portraits/women/59.jpg",
     cover: "https://image.ibb.co/jXXOHa/5.jpg",
     description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    social: {
+      facebook: "https://www.facebook.com/knyttneve",
+      twitter: "https://www.twitter.com/knyttneve",
+      instagram: "https://www.instagram.com/midlake",
+      github: "https://github.com/knyttneve"
+    }
   }
 ];
 Vue.component("thumb", {
@@ -43,14 +78,14 @@ Vue.component("thumb", {
         <div class="thumb__content">
           <h2 class="thumb__fullname">{{fullname}}</h2>
           <p class="thumb__title">{{title}}</p>
-        </div>
+        </div> 
       </div>`,
   props: ["fullname", "title", "photo", "test"]
 });
 const app = new Vue({
   el: "#app",
   data() {
-    return {
+    return { 
       users: users,
       coverPhoto: null,
       isShowDetail: false,
@@ -60,6 +95,12 @@ const app = new Vue({
       style:null,
       details:{
         description:null,
+        social:{
+          facebook:null,
+          twitter:null,
+          instagram:null,
+          github:null
+        }
       }
     };
   },
@@ -73,7 +114,7 @@ const app = new Vue({
     },
     selectUser(index) {
       this.selected = document.querySelector(this.thumbID(index));
-
+    
       this.style=`position:absolute;left:${this.selected.offsetLeft}px;top:${this.selected.offsetTop}px`;
       this.others = document.querySelectorAll(
         `.thumb:not(${this.thumbID(index)})`
@@ -100,7 +141,7 @@ const app = new Vue({
       setTimeout(() => {
         this.selected.setAttribute("style",this.style);
       }, 200);
-      setTimeout(() => {
+      setTimeout(() => { 
          this.isShowDetail = true;
           this.selected.style.top="90px"
       }, 220);

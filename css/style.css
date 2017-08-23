@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  background-color: #000;
+  background-color: #fff;
 }
 
 .wrapper {
@@ -17,7 +17,7 @@ body {
 
 .frame {
   width: 100%;
-  height: 100%;
+  height: 500px;
   position: relative;
   padding: 20px;
   box-sizing: border-box;
@@ -29,19 +29,15 @@ body {
 .frame--detail {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
-.frame--detail .cover {
+
+.frame--detail .cover__photo {
+  filter: blur(0px);
+  left: 0;
+  top: 0;
   height: 140px;
 }
-.frame--detail .cover__photo {
-  filter: blur(5px);
-  left: -5px;
-  top: 0;
-  width: 101%;
-  height: 400px;
-}
 .frame--detail .profile {
-  width: 100%;
-  transform: translateY(0);
+  transform: translateY(-115px);
   opacity: 1;
   transition-duration: .3s;
   pointer-events: auto;
@@ -54,13 +50,15 @@ body {
   font-weight: normal;
 }
 .frame--detail .thumb__fullname {
-  color: #000;
+  color: #fff;
   font-weight: bold;
+}
+.frame--detail .thumb__content {
+  top: 15px;
+  width: calc(100% - 90px);
 }
 .frame--detail .thumb__photo {
   width: 80px;
-  background: #000;
-  border-color: #fff;
   height: 80px;
   padding: 2px !important;
 }
@@ -77,25 +75,27 @@ body {
   transition: .5s ease 0s;
 }
 .cover__photo {
-  height: 120%;
-  width: 120%;
-  left: -10%;
-  top: -10%;
+  height: 100%;
+  width: 113%;
+  left: -25%;
   position: absolute;
   background-size: cover;
-  filter: blur(5px);
   transition: all 0.5s ease 0s;
+}
+.cover__photo__detail {
+  height: 100% !important;
+  width: 113% !important;
+  left: -15% !important;
 }
 
 .thumbs {
   position: relative;
   z-index: 1;
-  text-align: center;
 }
 
 .thumb {
-  display: inline-block;
-  width: 18%;
+  display: flex;
+  width: 115px;
   flex-wrap: wrap;
   user-select: none;
   cursor: pointer;
@@ -103,14 +103,13 @@ body {
   align-items: center;
   margin-bottom: 22px;
   transition: all .3s ease 0s;
-  transform: translateY(60px);
+  transform: translateY(0px);
   visibility: visible;
 }
 .thumb--disable {
   pointer-events: none;
   transform: translateY(5px);
   opacity: 0;
-  display: none;
   visibility: hidden;
 }
 .thumb:hover .thumb__photo {
@@ -118,27 +117,23 @@ body {
   border-color: transparent;
 }
 .thumb__photo {
-  margin: 10px auto;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: relative;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 4px;
   box-sizing: border-box;
   transition: all .3s ease 0s;
 }
-.thumb__photo__active {
-  margin: 284px auto 10px auto !important;
-}
 .thumb__photo img {
-  width: 71px;
-  height: 71px;
+  width: 100%;
   border-radius: 50%;
 }
 .thumb__content {
   position: relative;
   top: 0;
   transition: all .3s ease 0s;
+  width: calc(100% - 65px);
 }
 .thumb__fullname {
   font-family: "Nunito", "sans-serif";
@@ -153,12 +148,16 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+.thumb__fullname, .thumb__title {
+  color: #fff;
+}
 
 .profile {
   position: absolute;
+  bottom: 0;
   left: 0;
   z-index: 2;
-  padding: 40px 0 40px 0;
+  padding: 20px;
   opacity: 0;
   height: 150px;
   pointer-events: none;
@@ -167,11 +166,10 @@ body {
   font-family: "Nunito", "sans-serif";
   font-size: 14px;
   line-height: 20px;
+  width: 41%;
 }
 .profile__description {
-  margin: 20px auto;
-  text-align: center;
-  width: 80%;
+  margin-bottom: 20px;
   color: #fff;
 }
 .profile__social {
@@ -184,10 +182,7 @@ body {
   transition: .3s ease 0s;
 }
 .profile__social a:hover {
-  color: #000;
-}
-.profile__footer {
-  text-align: center;
+  color: #fff;
 }
 
 .back {

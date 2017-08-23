@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <meta charset="UTF-8">
-  <title>ArcheDream Characters</title>
+  <title>ArcheDream Characters | Iteration 2</title>
   <link href="https://fonts.googleapis.com/css?family=Chivo|Nunito:300,400,700" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
   <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
 
-  <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/style.css">
 
 
 </head>
@@ -27,11 +27,12 @@
              @click.native="selectUser(thumb.id)">
       </thumb>
     </div>
-    <div class="cover">
-      <div class="cover__photo" :style=`background-image:url(${coverPhoto})`></div>
+    <div id="cover-section"class="cover">
+      <div id="cover-section-photo" class="cover__photo" :style=`background-image:url(${coverPhoto})`></div>
     </div>
     <div class="profile">
       <p class="profile__description">{{users[selectedIndex].description}}</p>
+
       <div class="profile__footer">
           <div class="back" @click="backToUsers()"><i class="ion-ios-arrow-thin-left"></i>Back to Characters</div>
     </div>
