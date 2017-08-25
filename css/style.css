@@ -17,9 +17,9 @@ body {
 
 .frame {
   width: 100%;
-  height: 500px;
+  height: 520px;
   position: relative;
-  padding: 20px;
+  padding: 17px 20px;
   box-sizing: border-box;
   background: #000;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -89,13 +89,18 @@ body {
 }
 
 .thumbs {
+  margin-left: 50px;
   position: relative;
   z-index: 1;
+  display: inline-block;
+  height: 455px;
+  width: 25%;
 }
 
 .thumb {
-  display: flex;
-  width: 115px;
+  display: inline;
+  width: 135px;
+  float: left;
   flex-wrap: wrap;
   user-select: none;
   cursor: pointer;
@@ -117,8 +122,8 @@ body {
   border-color: transparent;
 }
 .thumb__photo {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   position: relative;
   padding: 4px;
@@ -130,20 +135,22 @@ body {
   border-radius: 50%;
 }
 .thumb__content {
+  margin: 5px 0;
   position: relative;
   top: 0;
   transition: all .3s ease 0s;
   width: calc(100% - 65px);
 }
 .thumb__fullname {
-  font-family: "Nunito", "sans-serif";
+  font-family: sans-serif;
   color: #fff;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 300;
 }
 .thumb__title {
   color: rgba(255, 255, 255, 0.5);
-  font-family: "Nunito", "sans-serif";
+  font-family: sans-serif;
   font-size: 9px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -163,13 +170,13 @@ body {
   pointer-events: none;
   transform: translateY(25px);
   transition: all .5s ease 0s;
-  font-family: "Nunito", "sans-serif";
+  font-family: sans-serif;
   font-size: 14px;
   line-height: 20px;
   width: 41%;
 }
 .profile__description {
-  margin-bottom: 20px;
+  margin: 30px 0;
   color: #fff;
 }
 .profile__social {
@@ -201,4 +208,17 @@ body {
 .back i {
   margin-right: 10px;
   font-size: 26px;
+}
+
+@media only screen and (max-device-width: 786px) {
+  .cover__photo__detail {
+    width: 125% !important;
+    left: -25% !important;
+  }
+  .cover__photo {
+        width: 125%;
+  }
+  .thumb {
+    width: 115px;
+  }
 }

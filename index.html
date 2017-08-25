@@ -21,7 +21,7 @@
       <thumb v-for="(thumb,index) in users"
              key="thumb.id"
              :id=`user-${thumb.id}`
-             :fullname="thumb.fullname"
+
              :photo="thumb.photo"
              @mouseover.native="changeCover(index)"
              @click.native="selectUser(thumb.id)">
@@ -31,6 +31,7 @@
       <div id="cover-section-photo" class="cover__photo" :style=`background-image:url(${coverPhoto})`></div>
     </div>
     <div class="profile">
+      <h2 class="thumb__fullname">{{users[selectedIndex].fullname}}</h2>
       <p class="profile__description">{{users[selectedIndex].description}}</p>
 
       <div class="profile__footer">

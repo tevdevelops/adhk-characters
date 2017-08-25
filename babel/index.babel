@@ -33,7 +33,7 @@ const users = [
     title: "Software Engineer",
     photo: "https://randomuser.me/api/portraits/men/62.jpg",
     cover: "https://image.ibb.co/jVDVxa/3.jpg",
-    description: "Literally typewriter asymmetrical, pork belly locavore helvetica scenester meditation squid before they sold out.",
+    description: "dsdsdsore helvetica scenester meditation squid before they sold out.",
     social: {
       facebook: "https://www.facebook.com/knyttneve",
       twitter: "https://www.twitter.com/knyttneve",
@@ -78,14 +78,14 @@ Vue.component("thumb", {
         <div class="thumb__content">
           <h2 class="thumb__fullname">{{fullname}}</h2>
           <p class="thumb__title">{{title}}</p>
-        </div> 
+        </div>
       </div>`,
   props: ["fullname", "title", "photo", "test"]
 });
 const app = new Vue({
   el: "#app",
   data() {
-    return { 
+    return {
       users: users,
       coverPhoto: null,
       isShowDetail: false,
@@ -114,7 +114,7 @@ const app = new Vue({
     },
     selectUser(index) {
       this.selected = document.querySelector(this.thumbID(index));
-    
+
       this.style=`position:absolute;left:${this.selected.offsetLeft}px;top:${this.selected.offsetTop}px`;
       this.others = document.querySelectorAll(
         `.thumb:not(${this.thumbID(index)})`
@@ -141,7 +141,7 @@ const app = new Vue({
       setTimeout(() => {
         this.selected.setAttribute("style",this.style);
       }, 200);
-      setTimeout(() => { 
+      setTimeout(() => {
          this.isShowDetail = true;
           this.selected.style.top="90px"
       }, 220);
